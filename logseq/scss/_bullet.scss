@@ -1,0 +1,107 @@
+/* bullet */
+// https://github.com/pengx17/logseq-dev-theme/blob/main/src/bullet_threading.scss
+
+:root {
+    --ls-bullet-threading-focus-background-color: var(--ls-secondary-theme-color);
+}
+
+// expander icon
+.ls-block {
+    .block-control span {
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .block-control svg {
+        color: transparent;
+    }
+    .block-control:hover svg {
+        color: var( --ls-bullet-threading-focus-background-color);
+    }
+}
+
+// bullet style
+.ls-block .bullet-container.cursor {
+    &:hover  {
+        background-color: transparent !important;
+         .bullet {
+            background-color: var(--ls-bullet-threading-focus-background-color);
+            box-shadow: 0 0 0 1px var(--ls-bullet-threading-focus-background-color);
+        }
+    }
+
+    &.bullet-closed:not(:hover) {
+        background-color: transparent;
+    }
+
+    :not(:focus-within) .bullet {
+        background-color: var(--ls-bullet-threading-background-color);
+    }
+}
+
+// bullet threading
+.ls-block {
+    .block-children-left-border:hover {
+        background-color: var(--ls-bullet-threading-background-color);
+        opacity: 0.85;
+    }
+    .block-children {
+        border-left-width: 1px !important;
+        border-left-color: var(--ls-bullet-threading-background-color);
+    }
+
+    .bullet {
+        background-color: var(--ls-bullet-threading-focus-background-color);
+        box-shadow: 0 0 0 1px var(--ls-bullet-threading-focus-background-color);
+    }
+
+    .ls-block:focus-within > div > div.items-center::before {
+        border-color: var(--ls-bullet-threading-focus-background-color);
+    }
+    .block-children:focus-within > .ls-block:not(:focus-within)::before {
+        border-color: var(--ls-bullet-threading-focus-background-color);
+    }
+
+    // multi-line blocks with children 
+    &[haschild="false"] {
+        &:focus-within > div > .block-content-wrapper::before {
+            display: none;
+        }
+    }
+    &[haschild="true"] {
+        > div > .block-content-wrapper::before {
+            left: -11.6px;
+            @media screen and (min-width: 640px) {
+                left: -16px;
+            }
+        }
+        &:focus-within > div > .block-content-wrapper::before {
+            border-color: var(--ls-block-bullet-active-color);
+        }
+    }
+}
+
+// == Some cases where bullet threading is not displayed
+
+@mixin no-bullet-threading() {
+    .ls-block:focus-within > div > div.items-center::before,
+    .block-children:focus-within > .ls-block:not(:focus-within)::before,
+    .ls-block[haschild]:focus-within > div > .block-content-wrapper::before {
+        border: none;
+    }
+}
+
+.custom-query,
+.cards-review .ls-card {
+    @include no-bullet-threading();
+}
+@if(not $IS_BULLET_THREADING) {
+    @include no-bullet-threading();
+}
+
+// When the window becomes narrower, 
+// the bullet spacing of the software will also change, 
+// perhaps officially to better adapt to mobile.
+// CSS cannot be adapted flexibly, so here is a compromise
+@media screen and (max-width: 768px) {
+    @include no-bullet-threading();
+}

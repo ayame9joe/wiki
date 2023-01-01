@@ -1,0 +1,35 @@
+/* the left menu */
+
+// Hide the left menu bar scroll bar
+.left-sidebar-inner {
+    scrollbar-width: none; /* firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.left-sidebar-inner ::-webkit-scrollbar {
+    display: none;
+}
+
+// favorits and recent 
+.left-sidebar-inner {
+    .header {
+        background-color: transparent !important;
+    }
+
+    a.item.active, a.item:active,
+    ul li:hover, ul li a:hover {
+        background-color: transparent !important;
+        color: var(--ls-custom-theme-color);
+    }
+    a.item:hover {
+        background-color: transparent !important;
+        color: var(--ls-custom-theme-color);
+        opacity: 0.78;
+    }
+
+    &, .create {
+        background-color: var(--ls-primary-background-color);
+        background-image: linear-gradient(transparent, var(--background-color)) !important;
+    }
+}

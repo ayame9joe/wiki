@@ -1,0 +1,139 @@
+/* ==== code block style ===== */
+
+@mixin bordeRadius() {
+    -webkit-border-radius: 10px !important; // Safari 3-4, iOS 1-3.2, Android 1.6-
+    -moz-border-radius: 10px !important;    // Firefox 1-3.6 
+    -khtml-border-radius: 10px !important;  // Konqueror
+    border-radius: 10px !important;         // Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+
+}
+
+.CodeMirror, 
+.CodeMirror-scroll .CodeMirror-sizer ,
+.CodeMirror-code .CodeMirror-linenumber {
+    font-family: var(--ct-code-font-family);
+    box-shadow: none;
+    text-shadow: none !important;
+    @include bordeRadius();
+}
+
+
+// upper right corner language display
+.extensions__code-lang {
+    @media screen and (max-width: 640px) {
+        display: none;
+    }
+    background: transparent;
+    color: var(--code-lang-color);
+    right: 1%;
+    top: 1%;
+}
+
+// 水平滚动条样式
+.CodeMirror-hscrollbar:not(:hover, :active) {
+    opacity: 0.05;
+}
+
+// 背景样式
+.CodeMirror-scroll .CodeMirror-sizer,
+.cm-s-solarized.cm-s-dark {
+    background: var(--ls-code-background-color) !important;
+    color: var(--ls-code-color) !important;
+    @include bordeRadius();
+    }
+//  序号样式
+.CodeMirror, .CodeMirror-scroll .CodeMirror-gutters,
+.CodeMirror-code .CodeMirror-linenumber,
+.cm-s-solarized.cm-s-dark .CodeMirror-gutters {
+    color: var(--code-lang-color) !important;
+    background: var(--ls-code-background-color) !important;
+    @include bordeRadius();
+}
+// 代码选中效果
+.CodeMirror .CodeMirror-lines div.CodeMirror-selected {
+    background: var(--ls-code-selected-background-color) !important;
+    font-weight: bolder !important;
+}
+// `` 语法的代码块
+:not(pre) > code {
+    background-color: rgba(var(--ls-secondary-background-color), 0.7);
+}
+
+// 其余代码样式设计
+// https://github.com/flowerornament/logseq-simple-parametric-theme
+.cm-s-solarized .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: #5bdf66 !important;
+}
+.cm-s-solarized span.cm-comment {
+    color: #a0a0a0;
+}
+.cm-s-solarized span.cm-string,
+.cm-s-solarized span.cm-string-2 {
+    color: #e6c963;
+}
+.cm-s-solarized span.cm-number {
+    color: #978ade;
+}
+.cm-s-solarized span.cm-variable {
+    color: #82aaff;
+}
+.cm-s-solarized span.cm-variable-2 {
+    color: rgba(255, 255, 255, 0.7);
+}
+.cm-s-solarized span.cm-def {
+    color: var(--ls-secondary-text-color);
+}
+.cm-s-solarized span.cm-operator {
+    color: #f15f60;
+}
+.cm-s-solarized span.cm-keyword {
+    color: #f15f60;
+}
+.cm-s-solarized span.cm-atom {
+    color: #978ade;
+}
+.cm-s-solarized span.cm-meta {
+    color: white;
+}
+.cm-s-solarized span.cm-tag {
+    color: #f07178;
+}
+.cm-s-solarized span.cm-attribute {
+    color: #c792ea;
+}
+.cm-s-solarized span.cm-qualifier {
+    color: #41b394;
+}
+.cm-s-solarized span.cm-property {
+    color: #9bd174;
+}
+.cm-s-solarized span.cm-builtin {
+    color: #45add6;
+}
+.cm-s-solarized span.cm-variable-3,
+.cm-s-solarized span.cm-type {
+    color: orange;
+}
+
+.white-theme .cm-s-solarized span.cm-string,
+.white-theme .cm-s-solarized span.cm-string-2 {
+    color: orange;
+}
+.white-theme .cm-s-solarized span.cm-variable-2 {
+    color: rgba(255, 255, 255, 0.7);
+}
+.white-theme .cm-s-solarized span.cm-def {
+    color: var(--ls-secondary-text-color);
+}
+.white-theme .cm-s-solarized span.cm-meta {
+    color: var(--ls-secondary-text-color);
+}
+
+// fix code block ref 
+ .block-ref {
+    // border-bottom: none;
+
+    .block-body > .cp__fenced-code-block div {
+        display: block !important;
+    }
+ }

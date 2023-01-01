@@ -1,0 +1,68 @@
+/* query model */
+
+@mixin bordeRadius() {
+    -webkit-border-radius: 10px !important; // Safari 3-4, iOS 1-3.2, Android 1.6-
+    -moz-border-radius: 10px !important;    // Firefox 1-3.6 
+    -khtml-border-radius: 10px !important;  // Konqueror
+    border-radius: 10px !important;         // Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+
+}
+
+// 隐藏 bullet
+.custom-query .block-control {
+    display: none;
+}
+// 滚动槽
+.custom-query .overflow-x-auto::-webkit-scrollbar {
+    background-color: var(--ls-primary-background-color);
+}
+.custom-query .overflow-x-auto {
+    scrollbar-color: var(--ls-primary-background-color); /* Firefox */
+}
+// 滚动滑块
+.custom-query .overflow-x-auto::-webkit-scrollbar-thumb {
+    @include bordeRadius();
+}
+:not(:active) .custom-query .overflow-x-auto::-webkit-scrollbar-thumb {
+    background-color: var(--ls-secondary-background-color, .7);
+}
+:not(:hover, :active) .custom-query .overflow-x-auto::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.custom-query .query-title {
+    background-color: transparent;
+    // Query title is not displayed in narrow screen case 
+    @media (max-width: 640px) {
+        display: none;
+    }
+}
+
+// .custom-query .flex-col,
+// .references-blocks {
+//     box-shadow: none !important;
+//     border-radius: 10px !important;
+//     border: 2px solid var(--ls-secondary-background-color) !important;
+//     background-color: var(--ls-primary-background-color) !important;
+// }
+// 查询效果和引用效果: references-blocks
+:not(.color-level) .color-level,
+.custom-query > div:first-child {
+    box-shadow: none;;
+    border-radius: 10px !important;
+    border: 2px solid var(--ls-secondary-background-color) !important;
+    background-color: transparent !important;
+}
+
+// table
+.table-auto {
+    & > thead > tr > th {
+        border-bottom: 2px solid var(--ls-secondary-background-color) !important;
+    }
+    & > tbody > tr.cursor {
+        background-color: transparent !important;
+
+        &:hover {
+            background-color: var(--ls-secondary-background-color) !important;
+        }
+    }
+}

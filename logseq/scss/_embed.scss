@@ -1,0 +1,33 @@
+/* ==== embed and quote ==== */
+
+// right sidebar
+.cp__right-sidebar-inner :not(.color-level) .sidebar-item-list > .color-level {
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    background-color: var(--embed-right-sidebar-background-color) !important;
+}
+
+// quote style
+blockquote {
+    background-color: var(--ls-primary-background-color);
+    border-left-color: var(--ls-custom-theme-color);
+}
+
+// embed style
+.embed,
+.embed-page,
+.embed-block {
+    border-radius: 8px;
+    transition: all ease-in 0.3s;
+}
+
+// turn off the trigger style for logseq-dev-theme theme embedding pages
+:is(.embed, .embed-page, .embed-block):is(:hover, :focus-within) {
+    box-shadow: none;
+    transform: none;
+    padding: 0.75em 0.5em;
+    margin: 0.5em;
+    border-radius: 8px;
+    transition: all ease-in 0.3s;
+}
